@@ -36,33 +36,17 @@ public class StateResolveTurn : AbstractState
         {
             Debug.Log($"Slot {i}:");
 
-            ICommand enemyCommand = enemyCommands[i];
-            if (enemyCommand != null)
-            {
-                enemyCommands[i].Execute();
-            }
-            else
-            {
-                Debug.Log("\tEnemy does NOTHING!");
-            }
+            ExecuteCommand(enemyCommands[i], "Enemy");
 
-            // Esto está ok?
+            // Esto está ok? <----------------------------------------------
             if (someoneHasDead)
             {
                 return;
-            } 
-
-            ICommand playerCommand = playerCommands[i];
-            if (playerCommand != null)
-            {
-                playerCommands[i].Execute();
-            }
-            else
-            {
-                Debug.Log("\tPlayer does NOTHING!");
             }
 
-            // Esto está ok?
+            ExecuteCommand(playerCommands[i], "Player");
+
+            // Esto está ok? <----------------------------------------------
             if (someoneHasDead)
             {
                 return;
@@ -75,6 +59,18 @@ public class StateResolveTurn : AbstractState
         // If we are here, neither player or enemy are dead!
         gameStateControl.ChangeState(gameStateControl.StateNewTurn);
 
+    }
+
+    private void ExecuteCommand(ICommand command, string who)
+    {
+        if (command != null)
+        {
+            command.Execute();
+        }
+        else
+        {
+            Debug.Log($"\t{who} does NOTHING!");
+        }
     }
 
     public override void Exit()
