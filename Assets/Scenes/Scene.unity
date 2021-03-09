@@ -588,7 +588,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   attacker: {fileID: 1755633552}
-  IsDefending: 0
 --- !u!1 &306591539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,8 +2255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d94620d9e9e9f84d8a246f5ea6565dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCommandSelection: {fileID: 1002243568}
-  enemyCommandSelection: {fileID: 1042885742}
+  playerSlotArrayControl: {fileID: 1002243568}
+  enemySlotArrayControl: {fileID: 1042885742}
 --- !u!114 &1136229115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2979,7 +2978,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   attacker: {fileID: 232998597}
-  IsDefending: 0
 --- !u!1 &1800857157
 GameObject:
   m_ObjectHideFlags: 0
