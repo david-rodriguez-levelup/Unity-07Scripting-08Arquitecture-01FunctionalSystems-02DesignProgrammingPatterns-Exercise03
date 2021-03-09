@@ -10,12 +10,15 @@
 //    En el OnNotify(DefenseAction action) pondremos isDefending a true.
 //    En el OnNotify(HealingAction action) pondremos isDefending a false.
 //    Problema con esta solución: si no se usan interfaces el resto de métodos quedan expuestos.
+// 3)
+// Si el Player/Enemy implementan máquina de estados entonces mirar si está en estado defenderse.
 
-public class ActionControl /* = DamageControl de la solución de David */ : MonoBehaviour, IObserver<AttackArgs>
+public class DamageControl : MonoBehaviour, IObserver<AttackArgs>
 {
-    [SerializeField] private float health; // Aquí de forma temporal, irá a un HealtControl o HealthState.
 
     [SerializeField] private GameObject attacker;
+
+    private HealthState healthState;
 
     private ISubject<AttackArgs> attackAgainstMeAction;
     //private ISubject<AttackArgs> attackAction;
@@ -24,6 +27,7 @@ public class ActionControl /* = DamageControl de la solución de David */ : Mono
 
     private void Awake()
     {
+        healthState = GetComponent<HealthState>();
         attackAgainstMeAction = attacker.GetComponent<ISubject<AttackArgs>>();
         //attackAction = GetComponent<ISubject<AttackArgs>>(); // Es necesario para poner isDefending a false! - PROBLEMA: Como distinguimos en el OnNotify(AttackArgs parameter) si es el atacante o somos nosotros.
         //defenseAction = GetComponent<DefenseAction>(); // Para poner isDefending a true! - PROBLEMA: Si no hay args como sabemos en el OnNotify si es el DefenseAction o el HealingAction. ¿Pasar un ID? Uf!
@@ -48,8 +52,8 @@ public class ActionControl /* = DamageControl de la solución de David */ : Mono
 
     public void OnNotify(AttackArgs parameter)
     {
-        health -= parameter.Damage;
-        Debug.Log($"\t{name} receives {parameter.Damage} points of damage (new health is {health})!!!");
+        // Cálculo del 50% si se está defendiendo!!!???      
+        healthState.TakeDamage(parameter.Damage);
     }
 
 }

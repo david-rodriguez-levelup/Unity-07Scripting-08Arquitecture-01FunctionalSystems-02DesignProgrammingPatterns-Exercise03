@@ -6,12 +6,15 @@ public class GameStateControl : MonoBehaviour
 
     [SerializeField] PlayerSlotArrayControl playerSlotArrayControl;
     [SerializeField] EnemySlotArrayControl enemySlotArrayControl;
+    [SerializeField] HealthState playerHealth;
+    [SerializeField] HealthState enemyHealth;
 
     private readonly List<ICommand> playerCommands = new List<ICommand>();
     private readonly List<ICommand> enemyCommands = new List<ICommand>();
 
     private LevelCounter levelCounter;
 
+    public IState StateNewGame { get; private set; }
     public IState StateNewLevel { get; private set; }
     public IState StateNewTurn { get; private set; }
     public IState StatePlayerSelection { get; private set; }
@@ -25,17 +28,18 @@ public class GameStateControl : MonoBehaviour
     {
         levelCounter = GetComponent<LevelCounter>();
 
-        StateNewLevel = new StateNewLevel(this, levelCounter);
+        StateNewGame = new StateNewGame(this, levelCounter);
+        StateNewLevel = new StateNewLevel(this, playerHealth, enemyHealth, levelCounter);
         StateNewTurn = new StateNewTurn(this, playerSlotArrayControl, playerCommands, enemySlotArrayControl, enemyCommands);
         StatePlayerSelection = new StatePlayerSelection(this, playerSlotArrayControl, playerCommands);
         StateEnemySelection = new StateEnemySelection(this, enemySlotArrayControl, enemyCommands);
-        StateResolveTurn = new StateResolveTurn(this, playerCommands, enemyCommands);
+        StateResolveTurn = new StateResolveTurn(this, playerHealth, enemyHealth, playerCommands, enemyCommands);
         StateGameOver = new StateGameOver(this);
     }
 
     private void Start()
     {
-        ChangeState(StateNewTurn);
+        ChangeState(StateNewGame);
     }
 
     private void Update()

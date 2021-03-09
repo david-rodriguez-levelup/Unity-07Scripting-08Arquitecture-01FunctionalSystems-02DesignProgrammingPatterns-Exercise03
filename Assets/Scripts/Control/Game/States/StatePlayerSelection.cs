@@ -16,7 +16,7 @@ public class StatePlayerSelection : AbstractState
         this.playerCommands = playerCommands;
     }
 
-    protected override void Enter()
+    public override void Enter()
     {
         playerSlotArrayControl.OnSelectionDone += AddPlayerCommands;
 
@@ -25,7 +25,7 @@ public class StatePlayerSelection : AbstractState
         // ... and wait for event playerCommandSelection.OnSelectionDone!
     }
 
-    protected override void Exit()
+    public override void Exit()
     {
         playerSlotArrayControl.OnSelectionDone -= AddPlayerCommands;
     }

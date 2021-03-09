@@ -3,17 +3,26 @@
 public class StateNewLevel : AbstractState
 {
 
+    private readonly HealthState playerHealth;
+    private readonly HealthState enemyHealth;
     private readonly LevelCounter levelCounter;
 
     public StateNewLevel(GameStateControl gameStateControl,
-                            LevelCounter levelCounter) : base(gameStateControl)
+                         HealthState playerHealth,
+                         HealthState enemyHealth,
+                         LevelCounter levelCounter) : base(gameStateControl)
     {
+        this.playerHealth = playerHealth;
+        this.enemyHealth = enemyHealth;
         this.levelCounter = levelCounter;
     }
 
-    protected override void Enter()
+    public override void Enter()
     {
         Debug.Log("NEW LEVEL!!!");
+
+        playerHealth.RestoreAll();
+        enemyHealth.RestoreAll();
 
         levelCounter.IncreaseLevel();
 

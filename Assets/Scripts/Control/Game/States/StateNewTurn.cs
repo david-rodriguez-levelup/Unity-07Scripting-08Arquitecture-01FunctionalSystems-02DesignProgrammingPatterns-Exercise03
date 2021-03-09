@@ -21,7 +21,7 @@ public class StateNewTurn : AbstractState
         this.enemyCommands = enemyCommands;
     }
 
-    protected override void Enter()
+    public override void Enter()
     {
         Debug.Log("NEW TURN:");
         Debug.Log("1) SELECTION:");

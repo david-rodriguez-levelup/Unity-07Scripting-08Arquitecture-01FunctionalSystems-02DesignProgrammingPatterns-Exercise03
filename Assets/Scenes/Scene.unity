@@ -512,6 +512,7 @@ GameObject:
   m_Component:
   - component: {fileID: 232998598}
   - component: {fileID: 232998602}
+  - component: {fileID: 232998603}
   - component: {fileID: 232998601}
   - component: {fileID: 232998600}
   - component: {fileID: 232998599}
@@ -586,8 +587,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc2ecae3dc852e4290de417b8f9d80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   attacker: {fileID: 1755633552}
+--- !u!114 &232998603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232998597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256f59a87348eaf4095e6b311fc9c9eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &306591539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,6 +2270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSlotArrayControl: {fileID: 1002243568}
   enemySlotArrayControl: {fileID: 1042885742}
+  playerHealth: {fileID: 232998603}
+  enemyHealth: {fileID: 1755633558}
 --- !u!114 &1136229115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2902,6 +2917,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1755633553}
   - component: {fileID: 1755633557}
+  - component: {fileID: 1755633558}
   - component: {fileID: 1755633554}
   - component: {fileID: 1755633556}
   - component: {fileID: 1755633555}
@@ -2976,8 +2992,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc2ecae3dc852e4290de417b8f9d80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
   attacker: {fileID: 232998597}
+--- !u!114 &1755633558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755633552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256f59a87348eaf4095e6b311fc9c9eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
 --- !u!1 &1800857157
 GameObject:
   m_ObjectHideFlags: 0

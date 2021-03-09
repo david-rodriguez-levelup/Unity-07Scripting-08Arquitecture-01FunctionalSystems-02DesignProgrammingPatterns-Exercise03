@@ -10,22 +10,22 @@ public class AbstractState : IState
         this.gameStateControl = gameStateControl;
     }
 
-    protected virtual void Enter() 
+    public virtual void Enter() 
     {
         //Debug.Log($"ENTER {GetType()}");
     }
 
-    protected virtual void Update()
+    public virtual void Update()
     {
         //Debug.Log($"UPDATE {GetType()}");
     }
 
-    protected virtual void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         //Debug.Log($"FIXED UPDATE {GetType()}");
     }
 
-    protected virtual void Exit()
+    public virtual void Exit()
     {
         //Debug.Log($"EXIT {GetType()}");
     }

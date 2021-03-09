@@ -16,7 +16,7 @@ public class StateEnemySelection : AbstractState
         this.enemyCommands = enemyCommands;
     }
 
-    protected override void Enter()
+    public override void Enter()
     {
         enemySlotArrayControl.OnSelectionDone += AddEnemyCommands;
 
@@ -25,7 +25,7 @@ public class StateEnemySelection : AbstractState
         // ... and wait for event enemyCommandSelection.OnSelectionDone!
     }
 
-    protected override void Exit()
+    public override void Exit()
     {
         enemySlotArrayControl.OnSelectionDone -= AddEnemyCommands;
     }

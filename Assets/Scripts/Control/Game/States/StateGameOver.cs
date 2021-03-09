@@ -5,9 +5,11 @@ public class StateGameOver : AbstractState
 
     public StateGameOver(GameStateControl gameStateControl) : base(gameStateControl) { }
 
-    protected override void Enter()
+    public override void Enter()
     {
         Debug.Log("GAME OVER!!!");
+
+        gameStateControl.ChangeState(gameStateControl.StateNewGame);
     }
 
 }
