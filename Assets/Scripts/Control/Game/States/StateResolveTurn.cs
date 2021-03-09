@@ -45,7 +45,22 @@ public class StateResolveTurn : AbstractState
 
         Debug.Log("______________________________________________________________\n\n");
 
-        gameStateControl.ChangeState(gameStateControl.StateNewTurn);
+        // HealthController?
+        bool playerIsDead = false;
+        bool enemyIsDead = false;
+        
+        if (enemyIsDead)
+        {
+            gameStateControl.ChangeState(gameStateControl.StateNewLevel);
+        }
+        else if (playerIsDead)
+        {
+            gameStateControl.ChangeState(gameStateControl.StateGameOver);
+        }
+        else // Neither player or enemy are dead.
+        {
+            gameStateControl.ChangeState(gameStateControl.StateNewTurn);
+        }
 
     }
 

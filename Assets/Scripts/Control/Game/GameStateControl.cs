@@ -17,6 +17,7 @@ public class GameStateControl : MonoBehaviour
     public IState StatePlayerSelection { get; private set; }
     public IState StateEnemySelection { get; private set; }
     public IState StateResolveTurn { get; private set; }
+    public IState StateGameOver { get; private set; }
 
     private IState currentState;
 
@@ -29,6 +30,7 @@ public class GameStateControl : MonoBehaviour
         StatePlayerSelection = new StatePlayerSelection(this, playerSlotArrayControl, playerCommands);
         StateEnemySelection = new StateEnemySelection(this, enemySlotArrayControl, enemyCommands);
         StateResolveTurn = new StateResolveTurn(this, playerCommands, enemyCommands);
+        StateGameOver = new StateGameOver(this);
     }
 
     private void Start()
